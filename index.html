@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>REAL SENSI V20</title>
+
+<style>
+
+/* =========================
+   TEMAS
+========================= */
+
+:root{
+
+    --main:#00d2ff;
+
+    --main-gradient:
+    linear-gradient(
+        135deg,
+        #00d2ff 0%,
+        #0066ff 100%
+    );
+
+    --sec:#ff007f;
+
+    --bg:#0d0f12;
+
+    --container-bg:#14171c;
+
+    --card-bg:#1c2026;
+
+    --border:#282f38;
+
+    --text-main:#ffffff;
+
+    --text-sec:#94a3b8;
+
+    --input-focus:#1e242c;
+}
+
+/* TEMA CLARO */
+
+[data-theme="light"]{
+
+    --bg:#f1f5f9;
+
+    --container-bg:#ffffff;
+
+    --card-bg:#f8fafc;
+
+    --border:#e2e8f0;
+
+    --text-main:#0f172a;
+
+    --text-sec:#64748b;
+
+    --input-focus:#f1f5f9;
+}
+
+/* =========================
+   TEMA REALX
+========================= */
+
+[data-theme="realx"]{
+
+    --main:#8b5cf6;
+
+    --main-gradient:
+    linear-gradient(
+        135deg,
+        #7f00ff 0%,
+        #00d2ff 100%
+    );
+
+    --sec:#ff00aa;
+
+    --bg:#07070a;
+
+    --container-bg:#111217;
+
+    --card-bg:#1a1c24;
+
+    --border:#2f3340;
+
+    --text-main:#ffffff;
+
+    --text-sec:#9ca3af;
+
+    --input-focus:#1f2230;
+}
+
+/* =========================
+   GERAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:var(--bg);
+
+    color:var(--text-main);
+
+    font-family:'Segoe UI',sans-serif;
+
+    display:flex;
+
+    justify-content:center;
+
+    padding:20px;
+
+    transition:.3s;
+}
+
+.container{
+
+    width:100%;
+
+    max-width:420px;
+
+    background:var(--container-bg);
+
+    border-radius:28px;
+
+    padding:25px;
+
+    border:1px solid var(--border);
+
+    box-shadow:0 20px 40px rgba(0,210,255,.05);
+
+    position:relative;
+
+    transition:.3s;
+}
+
+[data-theme="realx"] .container{
+
+    box-shadow:
+    0 0 40px rgba(127,0,255,.15),
+    0 0 60px rgba(0,210,255,.08);
+}
+
+/* =========================
+   BOTÕES DE TEMA
+========================= */
+
+.theme-toggle{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border);
+
+    color:var(--text-main);
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:800;
+}
+
+.theme-realx{
+
+    position:absolute;
+
+    top:20px;
+
+    left:20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7f00ff,
+        #00d2ff
+    );
+
+    border:none;
+
+    color:#fff;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    box-shadow:0 0 15px rgba(127,0,255,.35);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+    padding-top:30px;
+}
+
+.header h1{
+
+    font-size:28px;
+
+    font-weight:900;
+}
+
+.header h1 span{
+
+    background:var(--main-gradient);
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+.header p{
+
+    color:var(--text-sec);
+
+    font-size:11px;
+
+    margin-top:5px;
+
+    letter-spacing:1px;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.field-group{
+
+    margin-bottom:16px;
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-size:11px;
+
+    color:var(--text-sec);
+
+    font-weight:700;
+}
+
+input,
+select{
+
+    width:100%;
+
+    padding:16px;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    color:var(--text-main);
+
+    outline:none;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+input:focus,
+select:focus{
+
+    border-color:var(--main);
+
+    background:var(--input-focus);
+
+    box-shadow:0 0 12px rgba(0,210,255,.15);
+}
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+
+.btn-process{
+
+    width:100%;
+
+    border:none;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:var(--main-gradient);
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    margin-top:10px;
+}
+
+.btn-process:active{
+
+    transform:scale(.98);
+}
+
+/* =========================
+   LOADER
+========================= */
+
+#loader{
+
+    display:none;
+
+    text-align:center;
+
+    margin:30px 0;
+}
+
+.spinner{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+    border:4px solid rgba(255,255,255,.08);
+
+    border-top:4px solid var(--main);
+
+    margin:auto;
+
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.load-text{
+
+    margin-top:15px;
+
+    color:var(--main);
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+/* =========================
+   RESULTADO
+========================= */
+
+#result{
+
+    display:none;
+
+    margin-top:25px;
+}
+
+.ai-badge{
+
+    background:rgba(0,210,255,.06);
+
+    border:1px solid rgba(0,210,255,.15);
+
+    padding:14px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    color:var(--main);
+}
+
+[data-theme="realx"] .ai-badge{
+
+    background:rgba(127,0,255,.08);
+
+    border:1px solid rgba(127,0,255,.2);
+
+    color:#b388ff;
+}
+
+.card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:var(--card-bg);
+
+    border:1px solid var(--border);
+
+    border-left:4px solid var(--main);
+
+    padding:18px;
+
+    border-radius:16px;
+
+    margin-bottom:12px;
+}
+
+.btn-tiro{
+
+    border-left:4px solid var(--sec);
+}
+
+.card-label{
+
+    font-size:12px;
+
+    color:var(--text-sec);
+
+    font-weight:700;
+}
+
+.card-val{
+
+    font-size:28px;
+
+    font-weight:900;
+}
+
+.btn-copy{
+
+    width:100%;
+
+    background:none;
+
+    border:1px solid var(--main);
+
+    color:var(--main);
+
+    padding:14px;
+
+    border-radius:12px;
+
+    margin-bottom:15px;
+
+    cursor:pointer;
+
+    font-weight:700;
+}
+
+@media(max-width:480px){
+
+    .container{
+        padding:18px;
+    }
+
+    .card-val{
+        font-size:24px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <button
+        class="theme-realx"
+        onclick="ativarRealx()"
+    >
+        ⚡ REALX
+    </button>
+
+    <button
+        class="theme-toggle"
+        onclick="toggleTheme()"
+        id="theme-btn"
+    >
+        ☀️ Claro
+    </button>
+
+    <div class="header">
+
+        <h1>
+            REAL <span>SENSI</span>
+        </h1>
+
+        <p>
+            BANCO DE DADOS GLOBAL V20
+        </p>
+
+    </div>
+
+    <div class="field-group">
+        <label>MARCA</label>
+
+        <input
+            type="text"
+            id="marca"
+            placeholder="Samsung"
+        >
+    </div>
+
+    <div class="field-group">
+        <label>MODELO</label>
+
+        <input
+            type="text"
+            id="modelo"
+            placeholder="Galaxy A32"
+        >
+    </div>
+
+    <div class="field-group">
+
+        <label>INFLUENCIADOR</label>
+
+        <input
+            list="lista"
+            id="famoso"
+            placeholder="CEROL"
+        >
+
+        <datalist id="lista">
+
+            <option>CEROL</option>
+            <option>NOBRU</option>
+            <option>WHITE FF</option>
+            <option>RUOK FF</option>
+            <option>LOUD WILL</option>
+            <option>BAK</option>
+            <option>THURZIN</option>
+            <option>RAISTAR</option>
+
+        </datalist>
+
+    </div>
+
+    <div class="field-group">
+
+        <label>DPI</label>
+
+        <input
+            type="number"
+            id="dpi"
+            placeholder="600"
+        >
+
+    </div>
+
+    <div class="field-group">
+
+        <label>TIPO DE SENSI</label>
+
+        <select id="tipo">
+
+            <option value="ALTA">
+                ALTA (150 - 200)
+            </option>
+
+            <option value="MEDIA" selected>
+                MÉDIA (120 - 170)
+            </option>
+
+            <option value="BAIXA">
+                BAIXA (100 - 150)
+            </option>
+
+        </select>
+
+    </div>
+
+    <button
+        class="btn-process"
+        onclick="processarIA()"
+    >
+        MAPEAR IA & GERAR SENSI
+    </button>
+
+    <div id="loader">
+
+        <div class="spinner"></div>
+
+        <div
+            class="load-text"
+            id="loader-msg"
+        >
+            Conectando IA...
+        </div>
+
+    </div>
+
+    <div id="result">
+
+        <div class="ai-badge">
+
+            OTIMIZAÇÃO REALIZADA COM SUCESSO
+
+        </div>
+
+        <button
+            class="btn-copy"
+            onclick="copiarConfig()"
+        >
+            📋 COPIAR CONFIG
+        </button>
+
+        <div id="stats"></div>
+
+        <div class="card btn-tiro">
+
+            <div class="card-label">
+                BOTÃO DE TIRO
+            </div>
+
+            <div
+                id="res-btn"
+                class="card-val"
+            >
+                --
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let textoCopia = "";
+
+document.addEventListener(
+    "DOMContentLoaded",
+    atualizarControles
+);
+
+function atualizarControles(){
+
+    const temaSalvo =
+    localStorage.getItem(
+        "realSensiTheme"
+    ) || "dark";
+
+    document.documentElement
+    .setAttribute(
+        "data-theme",
+        temaSalvo
+    );
+
+    if(temaSalvo==="dark"){
+
+        document.getElementById(
+            "theme-btn"
+        ).innerText="☀️ Claro";
+
+    }else if(temaSalvo==="light"){
+
+        document.getElementById(
+            "theme-btn"
+        ).innerText="🌙 Escuro";
+
+    }else{
+
+        document.getElementById(
+            "theme-btn"
+        ).innerText="⚡ REALX";
+    }
+}
+
+function toggleTheme(){
+
+    const atual =
+    document.documentElement
+    .getAttribute("data-theme");
+
+    const novoTema =
+    atual==="light"
+    ? "dark"
+    : "light";
+
+    document.documentElement
+    .setAttribute(
+        "data-theme",
+        novoTema
+    );
+
+    localStorage.setItem(
+        "realSensiTheme",
+        novoTema
+    );
+
+    document.getElementById(
+        "theme-btn"
+    ).innerText =
+    novoTema==="dark"
+    ? "☀️ Claro"
+    : "🌙 Escuro";
+}
+
+function ativarRealx(){
+
+    document.documentElement
+    .setAttribute(
+        "data-theme",
+        "realx"
+    );
+
+    localStorage.setItem(
+        "realSensiTheme",
+        "realx"
+    );
+
+    document.getElementById(
+        "theme-btn"
+    ).innerText="⚡ REALX";
+}
+
+function getV(id){
+
+    return document
+    .getElementById(id)
+    .value
+    .toUpperCase()
+    .trim();
+}
+
+function processarIA(){
+
+    if(
+        !getV("marca") ||
+        !getV("modelo") ||
+        !getV("famoso") ||
+        !document.getElementById("dpi").value
+    ){
+        return alert(
+            "Preencha todos os campos."
+        );
+    }
+
+    document
+    .getElementById("result")
+    .style.display="none";
+
+    document
+    .getElementById("loader")
+    .style.display="block";
+
+    const msgs=[
+
+        "Escaneando hardware...",
+
+        "Aplicando DPI...",
+
+        "Gerando sensibilidade...",
+
+        "Finalizando..."
+    ];
+
+    let i=0;
+
+    const inter=setInterval(()=>{
+
+        if(i<msgs.length){
+
+            document
+            .getElementById("loader-msg")
+            .innerText=msgs[i];
+
+            i++;
+        }
+
+    },500);
+
+    setTimeout(()=>{
+
+        clearInterval(inter);
+
+        document
+        .getElementById("loader")
+        .style.display="none";
+
+        gerarResultados();
+
+    },2200);
+}
+
+function gerarResultados(){
+
+    const dados={
+
+        marca:getV("marca"),
+
+        modelo:getV("modelo"),
+
+        famoso:getV("famoso"),
+
+        tipo:getV("tipo"),
+
+        dpi:parseInt(
+            document
+            .getElementById("dpi")
+            .value
+        ) || 411
+    };
+
+    const aparelho =
+    `${dados.marca} ${dados.modelo}`;
+
+    const gerarSeed=(str)=>{
+
+        return str
+        .split("")
+        .reduce(
+            (acc,char,i)=>
+            acc+
+            (
+                char.charCodeAt(0)*
+                (i+1)
+            ),
+            0
+        );
+    };
+
+    const seedA=
+    gerarSeed(aparelho);
+
+    const seedF=
+    gerarSeed(dados.famoso);
+
+    let usados=[];
+
+    function engine(mult){
+
+        let min,max;
+
+        if(dados.tipo==="ALTA"){
+
+            min=150;
+            max=200;
+
+        }else if(
+            dados.tipo==="BAIXA"
+        ){
+
+            min=100;
+            max=150;
+
+        }else{
+
+            min=120;
+            max=170;
+        }
+
+        let valor=
+
+        min+
+
+        (
+            (
+                seedA*mult+
+                dados.dpi*seedF
+            )
+
+            %
+
+            (
+                max-min+1
+            )
+        );
+
+        while(usados.includes(valor)){
+
+            valor++;
+
+            if(valor>max){
+
+                valor=min;
+            }
+        }
+
+        usados.push(valor);
+
+        return valor;
+    }
+
+    const geral=engine(7);
+
+    const red=engine(13);
+
+    const m2=engine(19);
+
+    const m4=engine(23);
+
+    const botao=
+
+    (
+        dados.tipo==="ALTA"
+        ?42
+        :52
+    )
+
+    +
+
+    (
+        (
+            seedA+
+            dados.dpi
+        )%12
+    );
+
+    document
+    .getElementById("stats")
+    .innerHTML=`
+
+    <div class="card">
+
+        <div class="card-label">
+            GERAL
+        </div>
+
+        <div class="card-val">
+            ${geral}
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-label">
+            RED DOT
+        </div>
+
+        <div class="card-val">
+            ${red}
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-label">
+            MIRA 2X
+        </div>
+
+        <div class="card-val">
+            ${m2}
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <div class="card-label">
+            MIRA 4X
+        </div>
+
+        <div class="card-val">
+            ${m4}
+        </div>
+
+    </div>
+    `;
+
+    document
+    .getElementById("res-btn")
+    .innerText=
+    botao+"%";
+
+    textoCopia=
+`REAL SENSI CONFIG
+
+DISPOSITIVO: ${aparelho}
+DPI: ${dados.dpi}
+BASE IA: ${dados.famoso}
+
+GERAL: ${geral}
+RED DOT: ${red}
+MIRA 2X: ${m2}
+MIRA 4X: ${m4}
+
+BOTÃO: ${botao}%`;
+
+    document
+    .getElementById("result")
+    .style.display="block";
+}
+
+function copiarConfig(){
+
+    navigator.clipboard
+    .writeText(textoCopia)
+    .then(()=>{
+
+        alert(
+            "Configuração copiada!"
+        );
+
+    });
+}
+
+</script>
+
+</body>
+      </html>
